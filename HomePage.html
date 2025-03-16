@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Nexus</title>
+    <style>
+        /* General reset */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Copperplate, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Blue gradient background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative; /* Required for positioning elements */
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 200px;
+            margin: 0 auto 20px auto;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 2s ease-in forwards; /* Fade-in effect */
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Game title */
+        .title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Menu styles */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Menu items */
+        .menu-item {
+            width: 150px;
+            padding: 15px;
+            background: #4caf50; /* Green buttons */
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Hover effect */
+        .menu-item:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+
+        /* Active menu style */
+        .menu-item:active {
+            transform: scale(0.95);
+            background: #3e8e41;
+        }
+
+        /* Start Music Button */
+        .start-music-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            padding: 15px;
+            background: #ff5722; /* Orange button */
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hover effect for Start Music Button */
+        .start-music-button:hover {
+            background: #e64a19;
+            transform: scale(1.1);
+        }
+
+        /* Active effect for Start Music Button */
+        .start-music-button:active {
+            transform: scale(0.95);
+            background: #d84315;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="DRIANOP.png" alt="Game Logo">
+        </div>
+
+        <!-- Game Title -->
+        <h1 class="title">CRITICAL NEXUS</h1>
+
+        <!-- Menu -->
+        <div class="menu">
+            <a href="GamePlay.html" class="menu-item" id="start">Start</a>
+            <div class="menu-item" id="new-game">New Game</div>
+            <!-- Link to Settings.html -->
+            <a href="Settings.html" class="menu-item" id="settings">Settings</a>
+        </div>
+    </div>
+
+    <!-- Start Music Button -->
+    <div class="start-music-button" id="toggle-music">Start Music</div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="Start.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- JavaScript for Start/Stop Music -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const music = document.getElementById("background-music");
+            const toggleMusicButton = document.getElementById("toggle-music");
+
+            let isPlaying = false; // Track the current state of the music
+
+            toggleMusicButton.addEventListener("click", () => {
+                if (isPlaying) {
+                    music.pause();
+                    toggleMusicButton.textContent = "Start Music";
+                } else {
+                    music.play();
+                    toggleMusicButton.textContent = "Stop Music";
+                }
+                isPlaying = !isPlaying; // Toggle the state
+            });
+        });
+    </script>
+</body>
+</html>
